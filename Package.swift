@@ -30,7 +30,8 @@ let package = Package(
         // 10.2.4 until compound-ios moved to 11.0.0, and element-x-ios then could not resolve at all —
         // two exact requirements on one package have no solution, and the failure lands before anything
         // compiles. The upper bound is absurd on purpose; CI builds whatever Package.resolved holds.
-        .package(url: "https://github.com/element-hq/compound-design-tokens", "11.0.0" ..< "100.0.0"),
+//        .package(url: "https://github.com/element-hq/compound-design-tokens", "11.0.0" ..< "100.0.0"),
+            .package(url: "https://github.com/tchapgouv/compound-design-tokens", revision: "78340dddf04ca6e8e4aa2d1a5a1554f4dffda416"),
         // A range as well, and this is where that reasoning was first worked out.
         //
         // A library that pins the SDK exactly forces every consumer onto that version, so resolution
@@ -41,8 +42,9 @@ let package = Package(
         // The upper bound is absurd on purpose: the SDK's major version is the calendar year, so
         // `upToNextMajor` would lock hosts out every January. CI builds against one exact version, and
         // that is what actually gets tested.
-        .package(url: "https://github.com/element-hq/matrix-rust-components-swift", "26.10.15" ..< "100.0.0"),
-        .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", exact: "1.19.4")
+//        .package(url: "https://github.com/element-hq/matrix-rust-components-swift", "26.10.15" ..< "100.0.0"),
+        .package(url: "https://github.com/tchapgouv/matrix-rust-components-swift", exact: "26.10.8-main-ios"),
+        .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", exact: "1.19.6")
     ],
     targets: [
         .target(name: "ElementCallKit",
